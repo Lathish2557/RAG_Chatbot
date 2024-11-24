@@ -8,7 +8,7 @@ import openai
 from PyPDF2 import PdfReader
 
 # --- CONFIGURATION ---
-PDF_FILE = "data/manual.pdf"
+PDF_FILE = "data/UG_Catalog.pdf"
 EMBEDDINGS_FILE = "data/embeddings.npy"
 FAISS_INDEX_FILE = "data/faiss_index.bin"
 
@@ -119,8 +119,8 @@ def add_background_image_from_web(image_url):
 # Call the function with the web image URL
 add_background_image_from_web("https://img.freepik.com/premium-vector/white-background-with-blank-space-text_664601-2467.jpg?w=996")  
 
-st.title("Mustang Manual")
-st.write("Ask a question about the 2024 Ford Mustang.")
+st.title("Undergraduate Catalog 2022-2023")
+st.write("Ask a question")
 
 # --- REST OF YOUR CODE ---
 user_query = st.text_input("Enter your question:")
