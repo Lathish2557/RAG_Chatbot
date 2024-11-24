@@ -100,15 +100,35 @@ def generate_response(query):
     except Exception as e:
         return f"Error: {str(e)}"
 
+def add_background_image_from_web(image_url):
+    """
+    Adds a background image to the Streamlit app using a URL and custom CSS.
+    """
+    css = f"""
+    <style>
+    .stApp {{
+        background-image: url("{image_url}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }}
+    </style>
+    """
+    st.markdown(css, unsafe_allow_html=True)
+
+# Call the function with the web image URL
+add_background_image_from_web("https://img.freepik.com/premium-vector/white-background-with-blank-space-text_664601-2467.jpg?w=996")  
+
 st.title("Mustang Manual")
 st.write("Ask a question about the 2024 Ford Mustang.")
 
+# --- REST OF YOUR CODE ---
 user_query = st.text_input("Enter your question:")
 
 if st.button("Get Answer"):
     if user_query:
         with st.spinner("Retrieving documents and generating response..."):
-            response = generate_response(user_query)
+            response = generate_response(user_query)  # Ensure this function is defined
         st.subheader("Response:")
         st.write(response)
     else:
