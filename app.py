@@ -101,7 +101,8 @@ def generate_response(query):
         return f"Error: {str(e)}"
 
 # --- ADD BACKGROUND IMAGE WITH OVERLAY ---
-def add_background_image_with_overlay():
+# --- ADD BACKGROUND IMAGE WITH TEXT STYLING ---
+def add_background_image_with_text_styling():
     background_image_url = "https://www.ford.com/is/image/content/dam/vdm_ford/live/en_us/ford/nameplate/mustang/2024/collections/dm/24_FRD_MST_61047.tif?croppathe=1_3x2&wid=1440"  # Replace with your Mustang image URL
     st.markdown(
         f"""
@@ -118,18 +119,27 @@ def add_background_image_with_overlay():
             margin: 50px auto;  /* Center the box with spacing */
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow for visibility */
         }}
+        h1, h2, h3, h4, h5, h6 {{
+            color: #1f77b4;  /* Set header text color */
+        }}
+        p {{
+            color: #ff4500;  /* Set paragraph text color */
+            background-color: #ffff99;  /* Highlight text with yellow */
+            padding: 5px;  /* Add padding to make the highlight more noticeable */
+            border-radius: 5px;  /* Smooth corners for highlighted text */
+        }}
         </style>
         """,
         unsafe_allow_html=True
     )
     st.markdown('<div class="content-box">', unsafe_allow_html=True)
 
-# Call the function to add the background and overlay
-add_background_image_with_overlay()
+# Call the function to add the background and text styles
+add_background_image_with_text_styling()
 
 # --- STREAMLIT UI ---
-st.title("Mustang maual")
-st.write("Ask a question about the 2024 Ford Mustang.")
+st.title("RAG Chatbot")
+st.write("Ask a question, and the chatbot will provide answers based on the PDF content.")
 
 user_query = st.text_input("Enter your question:")
 
@@ -138,7 +148,7 @@ if st.button("Get Answer"):
         with st.spinner("Retrieving documents and generating response..."):
             response = generate_response(user_query)
         st.subheader("Response:")
-        st.write(response)
+        st.write(response)  # The response text will now follow the new text styling
     else:
         st.warning("Please enter a question.")
 
