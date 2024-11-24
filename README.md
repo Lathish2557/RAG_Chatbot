@@ -1,4 +1,4 @@
-# RAG Chatbot Using PDF and GPT Integration
+# RAG Chatbot
 
 This repository provides a **Retrieval-Augmented Generation (RAG)** chatbot application built with **Streamlit**, **FAISS**, **SentenceTransformers**, and **OpenAI GPT models**. The chatbot retrieves relevant information from a PDF document and generates natural language answers based on the retrieved content.
 
