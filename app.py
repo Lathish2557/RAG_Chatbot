@@ -8,7 +8,7 @@ import openai
 from PyPDF2 import PdfReader
 
 # --- CONFIGURATION ---
-PDF_FILE = "data/UG_Catalog.pdf"
+PDF_FILE = "data/UG_catalog.pdf"
 EMBEDDINGS_FILE = "data/embeddings.npy"
 FAISS_INDEX_FILE = "data/faiss_index.bin"
 
