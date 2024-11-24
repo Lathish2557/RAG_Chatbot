@@ -15,23 +15,6 @@ FAISS_INDEX_FILE = "data/faiss_index.bin"
 # Set up OpenAI API key
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-# --- Load Background Image ---
-def add_background_image():
-    background_image_url = "https://www.ford.com/is/image/content/dam/vdm_ford/live/en_us/ford/nameplate/mustang/2024/collections/dm/24_FRD_MST_61047.tif?croppathe=1_3x2&wid=1440"  # Replace with your Mustang image URL
-    st.markdown(
-        f"""
-        <style>
-        .stApp {{
-            background: url("{background_image_url}") no-repeat center center fixed;
-            background-size: cover;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
-add_background_image()
-
 # --- LOAD DATA FROM PDF ---
 @st.cache_data
 def load_data_from_pdf(file_path):
@@ -117,6 +100,31 @@ def generate_response(query):
     except Exception as e:
         return f"Error: {str(e)}"
 
+def add_background_image_with_overlay():
+    background_image_url = "https://example.com/mustang_image.jpg"  # Replace with your Mustang image URL
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background: url("{background_image_url}") no-repeat center center fixed;
+            background-size: cover;
+        }}
+        .content-box {{
+            background-color: rgba(255, 255, 255, 0.8);  /* Semi-transparent white background */
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    st.markdown('<div class="content-box">', unsafe_allow_html=True)
+
+# Call the function to add the background and overlay
+add_background_image_with_overlay()
+
 # --- STREAMLIT UI ---
 st.title("RAG Chatbot")
 st.write("Ask a question, and the chatbot will provide answers based on the PDF content.")
@@ -131,3 +139,5 @@ if st.button("Get Answer"):
         st.write(response)
     else:
         st.warning("Please enter a question.")
+
+st.markdown('</div>', unsafe_allow_html=True)
