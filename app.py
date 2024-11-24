@@ -100,6 +100,7 @@ def generate_response(query):
     except Exception as e:
         return f"Error: {str(e)}"
 
+# --- ADD BACKGROUND IMAGE WITH OVERLAY ---
 def add_background_image_with_overlay():
     background_image_url = "https://www.ford.com/is/image/content/dam/vdm_ford/live/en_us/ford/nameplate/mustang/2024/collections/dm/24_FRD_MST_61047.tif?croppathe=1_3x2&wid=1440"  # Replace with your Mustang image URL
     st.markdown(
@@ -110,11 +111,12 @@ def add_background_image_with_overlay():
             background-size: cover;
         }}
         .content-box {{
-            background-color: rgba(255, 255, 255, 0.8);  /* Semi-transparent white background */
+            background-color: rgba(255, 255, 255, 0.9);  /* Semi-transparent white background */
             border-radius: 10px;
             padding: 20px;
             max-width: 800px;
-            margin: auto;
+            margin: 50px auto;  /* Center the box with spacing */
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow for visibility */
         }}
         </style>
         """,
@@ -126,8 +128,8 @@ def add_background_image_with_overlay():
 add_background_image_with_overlay()
 
 # --- STREAMLIT UI ---
-st.title("RAG Chatbot")
-st.write("Ask a question, and the chatbot will provide answers based on the PDF content.")
+st.title("Mustang maual")
+st.write("Ask a question about the 2024 Ford Mustang.")
 
 user_query = st.text_input("Enter your question:")
 
