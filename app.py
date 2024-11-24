@@ -100,8 +100,8 @@ def generate_response(query):
     except Exception as e:
         return f"Error: {str(e)}"
 
-st.title("RAG Chatbot")
-st.write("Ask a question, and the chatbot will provide answers based on the PDF content.")
+st.title("Mustang Manual")
+st.write("Ask a question about the 2024 Ford Mustang.")
 
 user_query = st.text_input("Enter your question:")
 
