@@ -15,6 +15,23 @@ FAISS_INDEX_FILE = "data/faiss_index.bin"
 # Set up OpenAI API key
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
+# --- Load Background Image ---
+def add_background_image():
+    background_image_url = "https://www.ford.com/is/image/content/dam/vdm_ford/live/en_us/ford/nameplate/mustang/2024/collections/dm/24_FRD_MST_61047.tif?croppathe=1_3x2&wid=1440"  # Replace with your Mustang image URL
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background: url("{background_image_url}") no-repeat center center fixed;
+            background-size: cover;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+add_background_image()
+
 # --- LOAD DATA FROM PDF ---
 @st.cache_data
 def load_data_from_pdf(file_path):
@@ -78,7 +95,6 @@ def retrieve_documents(query, k=5):
     if not filtered_results.empty:
         return filtered_results
     return results  # Return original results if no match is found
-
 
 # --- GPT-4 RESPONSE GENERATION ---
 def generate_response(query):
