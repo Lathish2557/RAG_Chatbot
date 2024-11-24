@@ -101,7 +101,7 @@ def generate_response(query):
         return f"Error: {str(e)}"
 
 def add_background_image_with_overlay():
-    background_image_url = "https://example.com/mustang_image.jpg"  # Replace with your Mustang image URL
+    background_image_url = "https://www.ford.com/is/image/content/dam/vdm_ford/live/en_us/ford/nameplate/mustang/2024/collections/dm/24_FRD_MST_61047.tif?croppathe=1_3x2&wid=1440"  # Replace with your Mustang image URL
     st.markdown(
         f"""
         <style>
